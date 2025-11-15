@@ -35,7 +35,7 @@
 
         html, body {
             height: 100%;
-            background: linear-gradient(180deg, #051524 0%, #07172b 100%);
+            background: linear-gradient(135deg, #051524 0%, #0a1a2f 100%);
             color: #f1f5f9;
             font-size: 16px;
             line-height: 1.5;
@@ -91,6 +91,35 @@
             font-size: 18px;
             font-weight: 600;
             color: #f8fafc;
+        }
+
+        /* Header avec logos */
+        .header-with-logos {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logos-container {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            border-radius: 6px;
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px;
+        }
+
+        .header-text {
+            flex: 1;
         }
 
         /* Activity cards - MEILLEURE LISIBILITÉ */
@@ -685,7 +714,17 @@
 <body>
     <div class="app">
         <aside class="sidebar">
-            <h1>Planning AIS</h1>
+            <div class="header-with-logos">
+                <div class="logos-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/6/6d/Logo_BGE.svg/1200px-Logo_BGE.svg.png" alt="BGE Toulouse" class="logo">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Formation AIS" class="logo">
+                </div>
+                <div class="header-text">
+                    <h1>Planning AIS</h1>
+                    <div class="muted">BGE Toulouse - 2025-2026</div>
+                </div>
+            </div>
+            
             <div class="panel">
                 <div style="margin-bottom:12px">
                     <label>Rechercher</label>
@@ -1096,7 +1135,7 @@
             `;
         }
 
-        // Rendu du calendrier
+        // Rendu du calendrier - CORRECTION : Filtrer selon les critères
         function renderCalendar() {
             const contentArea = document.getElementById('contentArea');
             
@@ -1105,6 +1144,11 @@
             const daysInMonth = lastDay.getDate();
             const startingDay = firstDay.getDay();
             const adjustedStartingDay = startingDay === 0 ? 6 : startingDay - 1;
+            
+            // Récupérer les filtres actuels
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const typeFilter = document.getElementById('filterType').value;
+            const formateurFilter = document.getElementById('filterFormateur').value.toLowerCase();
             
             let html = `
                 <div class="month-nav">
@@ -1130,7 +1174,32 @@
             
             for (let day = 1; day <= daysInMonth; day++) {
                 const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                const dayActivities = activities.filter(a => a.date === dateStr);
+                
+                // Filtrer les activités selon les critères de recherche
+                let dayActivities = activities.filter(activity => activity.date === dateStr);
+                
+                // Appliquer les filtres
+                if (searchTerm || typeFilter || formateurFilter) {
+                    dayActivities = dayActivities.filter(activity => {
+                        if (searchTerm) {
+                            const searchText = `${activity.module} ${activity.formateur} ${activity.détail}`.toLowerCase();
+                            if (!searchText.includes(searchTerm)) {
+                                return false;
+                            }
+                        }
+                        
+                        if (typeFilter && activity.type !== typeFilter) {
+                            return false;
+                        }
+                        
+                        if (formateurFilter && !activity.formateur.toLowerCase().includes(formateurFilter)) {
+                            return false;
+                        }
+                        
+                        return true;
+                    });
+                }
+                
                 const isToday = dateStr === today;
                 
                 html += `<div class="calendar-day ${isToday ? 'today' : ''}" data-date="${dateStr}">`;
