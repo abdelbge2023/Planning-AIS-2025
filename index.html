@@ -604,7 +604,7 @@
         </div>
     </div>
 
-    <footer>Planning AIS — Version Web (El azhari Amazzale Abdelhadi)</footer>
+    <footer>Planning AIS — Version Web</footer>
 
     <script>
         // Données extraites du fichier Excel
@@ -824,7 +824,13 @@
         function showAllActivities() {
             currentView = 'all';
             document.getElementById('mainTitle').textContent = "Toutes les activités";
+            // CORRECTION : Réinitialiser les filtres pour montrer TOUTES les activités
             filteredActivities = [...activities];
+            // CORRECTION : Réinitialiser les champs de recherche
+            document.getElementById('search').value = '';
+            document.getElementById('filterType').value = '';
+            document.getElementById('filterFormateur').value = '';
+            
             refreshDisplay();
             updateStatus(`${activities.length} activités au total`);
         }
