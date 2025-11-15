@@ -35,7 +35,10 @@
 
         html, body {
             height: 100%;
-            background: linear-gradient(135deg, #051524 0%, #0a1a2f 100%);
+            background: 
+                linear-gradient(135deg, rgba(5, 21, 36, 0.9) 0%, rgba(10, 26, 47, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat,
+                #0f1724;
             color: #f1f5f9;
             font-size: 16px;
             line-height: 1.5;
@@ -43,7 +46,7 @@
 
         .app {
             display: grid;
-            grid-template-columns: 320px 1fr;
+            grid-template-columns: 280px 1fr;
             gap: 16px;
             padding: 16px;
             height: 100vh;
@@ -52,43 +55,47 @@
         }
 
         .sidebar {
-            background: var(--card);
+            background: rgba(11, 18, 32, 0.85);
             border-radius: 12px;
-            padding: 20px;
+            padding: 16px;
             box-shadow: 0 8px 25px rgba(2, 6, 23, .7);
             overflow: auto;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .main {
-            background: var(--card);
+            background: rgba(11, 18, 32, 0.85);
             border-radius: 12px;
             padding: 20px;
             box-shadow: 0 8px 25px rgba(2, 6, 23, .7);
             overflow: auto;
             display: flex;
             flex-direction: column;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .panel {
             background: var(--panel);
-            padding: 16px;
+            padding: 14px;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         h1 {
-            margin: 0 0 12px 0;
-            font-size: 22px;
+            margin: 0 0 10px 0;
+            font-size: 20px;
             font-weight: 700;
             color: #f8fafc;
         }
 
         h2 {
-            margin: 0 0 12px 0;
-            font-size: 18px;
+            margin: 0 0 10px 0;
+            font-size: 16px;
             font-weight: 600;
             color: #f8fafc;
         }
@@ -97,25 +104,25 @@
         .header-with-logos {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logos-container {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
         }
 
         .logo {
-            height: 50px;
+            height: 40px;
             width: auto;
             border-radius: 6px;
             object-fit: contain;
             background: rgba(255, 255, 255, 0.05);
-            padding: 6px;
+            padding: 4px;
         }
 
         .header-text {
@@ -131,7 +138,7 @@
 
         .activity-card {
             background: var(--panel);
-            padding: 18px;
+            padding: 16px;
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -149,24 +156,24 @@
 
         .activity-date {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 16px;
             color: var(--accent);
-            margin-bottom: 14px;
-            padding-bottom: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .activity-items {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .activity-item {
             display: grid;
-            grid-template-columns: 90px 1fr;
-            gap: 14px;
-            padding: 14px;
+            grid-template-columns: 80px 1fr;
+            gap: 12px;
+            padding: 12px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -185,8 +192,8 @@
             justify-content: center;
             background: rgba(96, 165, 250, 0.15);
             border-radius: 6px;
-            padding: 10px;
-            font-size: 14px;
+            padding: 8px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--accent);
             text-align: center;
@@ -197,31 +204,31 @@
         .activity-content {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
         }
 
         .activity-module {
             font-weight: 600;
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.4;
             color: #f8fafc;
         }
 
         .activity-trainer {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--muted);
             line-height: 1.4;
             font-weight: 500;
         }
 
         .activity-detail {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--muted);
             line-height: 1.4;
         }
 
         .activity-location {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--muted);
             font-style: italic;
             line-height: 1.4;
@@ -229,11 +236,11 @@
 
         .badge {
             display: inline-block;
-            padding: 4px 8px;
+            padding: 3px 6px;
             border-radius: 4px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
-            margin-right: 6px;
+            margin-right: 5px;
         }
 
         /* type colors */
@@ -271,11 +278,11 @@
         input, select {
             background: rgba(255, 255, 255, 0.07);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 12px 14px;
+            padding: 10px 12px;
             border-radius: 6px;
             color: #f1f5f9;
             width: 100%;
-            font-size: 15px;
+            font-size: 14px;
             transition: all 0.2s ease;
         }
 
@@ -292,27 +299,27 @@
         }
 
         label {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--muted);
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 500;
         }
 
         button {
             background: var(--accent);
             border: none;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 6px;
             color: #04233a;
             font-weight: 600;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         button:hover {
@@ -323,7 +330,7 @@
 
         .muted {
             color: var(--muted);
-            font-size: 14px;
+            font-size: 13px;
         }
 
         footer {
@@ -340,7 +347,7 @@
         /* View controls */
         .view-controls {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 16px;
         }
 
@@ -348,14 +355,14 @@
             background: var(--panel);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--muted);
-            padding: 10px 16px;
+            padding: 8px 12px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .view-btn:hover {
@@ -374,15 +381,15 @@
         .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
+            gap: 6px;
             margin-top: 16px;
         }
 
         .calendar-day {
             background: var(--panel);
             border-radius: 8px;
-            padding: 10px;
-            min-height: 100px;
+            padding: 8px;
+            min-height: 90px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             cursor: pointer;
             transition: all 0.2s ease;
@@ -397,9 +404,9 @@
 
         .calendar-day-header {
             font-weight: 600;
-            font-size: 12px;
+            font-size: 11px;
             text-align: center;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             color: var(--muted);
         }
 
@@ -410,9 +417,9 @@
 
         .calendar-day-number {
             font-weight: 700;
-            font-size: 16px;
+            font-size: 14px;
             text-align: center;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             color: #f8fafc;
         }
 
@@ -420,12 +427,12 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 2px;
         }
 
         .calendar-activity {
-            font-size: 11px;
-            padding: 3px 5px;
+            font-size: 10px;
+            padding: 2px 4px;
             border-radius: 3px;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -444,13 +451,13 @@
             background: var(--panel);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--muted);
-            padding: 8px 12px;
-            font-size: 14px;
+            padding: 6px 10px;
+            font-size: 13px;
         }
 
         .month-title {
             font-weight: 700;
-            font-size: 18px;
+            font-size: 16px;
             color: #f8fafc;
         }
 
@@ -472,8 +479,8 @@
         .modal-content {
             background: var(--card);
             border-radius: 12px;
-            padding: 24px;
-            max-width: 500px;
+            padding: 20px;
+            max-width: 480px;
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
@@ -485,13 +492,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .modal-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--accent);
         }
@@ -500,11 +507,11 @@
             background: none;
             border: none;
             color: var(--muted);
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
             padding: 0;
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -519,12 +526,12 @@
 
         .modal-activity-item {
             display: grid;
-            grid-template-columns: 70px 1fr;
-            gap: 12px;
-            padding: 12px;
+            grid-template-columns: 65px 1fr;
+            gap: 10px;
+            padding: 10px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 6px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
@@ -534,8 +541,8 @@
             justify-content: center;
             background: rgba(96, 165, 250, 0.15);
             border-radius: 5px;
-            padding: 8px;
-            font-size: 12px;
+            padding: 6px;
+            font-size: 11px;
             font-weight: 600;
             color: var(--accent);
             text-align: center;
@@ -545,17 +552,17 @@
         .modal-activity-content {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
         }
 
         .modal-activity-module {
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
             color: #f8fafc;
         }
 
         .modal-activity-meta {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--muted);
         }
 
@@ -563,16 +570,16 @@
         .checkbox-container {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 8px;
+            gap: 6px;
+            margin-top: 6px;
         }
 
         .activity-checkbox {
-            transform: scale(1.1);
+            transform: scale(1);
         }
 
         .checkbox-label {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--muted);
         }
 
@@ -591,7 +598,7 @@
             background: var(--panel);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 6px;
-            max-height: 200px;
+            max-height: 180px;
             overflow-y: auto;
             z-index: 100;
             display: none;
@@ -599,8 +606,8 @@
         }
 
         .formateur-item {
-            padding: 10px 12px;
-            font-size: 14px;
+            padding: 8px 10px;
+            font-size: 13px;
             cursor: pointer;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.2s ease;
@@ -616,16 +623,16 @@
 
         /* Style pour la liste des formateurs */
         .formateurs-container {
-            max-height: 150px;
+            max-height: 140px;
             overflow-y: auto;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 6px;
-            padding: 8px;
+            padding: 6px;
         }
 
         .formateur-display-item {
-            font-size: 14px;
-            padding: 8px 10px;
+            font-size: 13px;
+            padding: 6px 8px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--muted);
             transition: all 0.2s ease;
@@ -644,7 +651,7 @@
         .search-btn {
             background: var(--green);
             width: 100%;
-            margin-top: 12px;
+            margin-top: 10px;
         }
 
         .search-btn:hover {
@@ -657,8 +664,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -703,11 +710,22 @@
         /* Statut */
         .status {
             background: rgba(96, 165, 250, 0.1);
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--accent);
             border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        /* Boutons compacts dans la sidebar */
+        .compact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .compact-buttons button {
+            width: 100%;
         }
     </style>
 </head>
@@ -726,15 +744,18 @@
             </div>
             
             <div class="panel">
-                <div style="margin-bottom:12px">
+                <div style="margin-bottom:10px">
                     <label>Rechercher</label>
                     <input id="search" placeholder="Module, formateur..." />
                 </div>
-                <div style="display:flex;gap:10px;margin-bottom:12px">
+                <div class="compact-buttons">
                     <button id="btnToday">📅 Aujourd'hui</button>
                     <button id="btnNext">⏭️ Suivant</button>
                 </div>
-                <div style="margin-bottom:12px">
+            </div>
+
+            <div class="panel">
+                <div style="margin-bottom:10px">
                     <label>Type d'activité</label>
                     <select id="filterType">
                         <option value="">Tous les types</option>
@@ -747,7 +768,7 @@
                         <option value="Congé">Congé</option>
                     </select>
                 </div>
-                <div style="margin-bottom:12px">
+                <div style="margin-bottom:10px">
                     <label>Formateur</label>
                     <div class="formateur-dropdown">
                         <input id="filterFormateur" placeholder="Choisir un formateur" list="formateurList" />
@@ -761,13 +782,15 @@
 
             <div class="panel">
                 <h2>Navigation</h2>
-                <button id="btnShowAll" style="width:100%;margin-bottom:8px">📊 Toutes les activités</button>
-                <button id="btnCalendar" style="width:100%">📅 Vue calendrier</button>
+                <div class="compact-buttons">
+                    <button id="btnShowAll">📊 Toutes les activités</button>
+                    <button id="btnCalendar">📅 Vue calendrier</button>
+                </div>
             </div>
 
             <div class="panel">
                 <h2>Formateurs</h2>
-                <div id="formateursCount" class="muted" style="margin-bottom:8px"></div>
+                <div id="formateursCount" class="muted" style="margin-bottom:6px"></div>
                 <div id="formateursList" class="formateurs-container">
                     <!-- Liste des formateurs générée dynamiquement -->
                 </div>
@@ -1152,9 +1175,9 @@
             
             let html = `
                 <div class="month-nav">
-                    <button id="prevMonth">◀ Mois précédent</button>
+                    <button id="prevMonth">◀ Précédent</button>
                     <div class="month-title">${firstDay.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}</div>
-                    <button id="nextMonth">Mois suivant ▶</button>
+                    <button id="nextMonth">Suivant ▶</button>
                 </div>
                 <div class="calendar">
                     <div class="calendar-day-header">Lun</div>
