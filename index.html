@@ -36,6 +36,7 @@
             height: 100%;
             background: linear-gradient(180deg, #051524 0%, #07172b 100%);
             color: #e6eef8;
+            font-size: 14px; /* Augmentation de la taille de base */
         }
 
         .app {
@@ -64,32 +65,32 @@
 
         .panel {
             background: var(--panel);
-            padding: 10px;
+            padding: 12px; /* Légère augmentation */
             border-radius: 6px;
-            margin-bottom: 10px;
+            margin-bottom: 12px; /* Légère augmentation */
         }
 
         h1 {
-            margin: 0 0 6px 0;
-            font-size: 16px;
+            margin: 0 0 8px 0; /* Légère augmentation */
+            font-size: 18px; /* Augmentation */
             font-weight: 600;
         }
 
         h2 {
-            margin: 0 0 6px 0;
-            font-size: 14px;
+            margin: 0 0 8px 0; /* Légère augmentation */
+            font-size: 16px; /* Augmentation */
         }
 
-        /* Activity cards - TRÈS COMPACT */
+        /* Activity cards - LÉGÈREMENT PLUS GRANDES */
         .activity-list {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px; /* Légère augmentation */
         }
 
         .activity-card {
             background: var(--panel);
-            padding: 10px;
+            padding: 12px; /* Légère augmentation */
             border-radius: 6px;
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -104,28 +105,28 @@
 
         .activity-date {
             font-weight: 600;
-            font-size: 13px;
+            font-size: 15px; /* Augmentation */
             color: var(--accent);
-            margin-bottom: 8px;
-            padding-bottom: 4px;
+            margin-bottom: 10px; /* Légère augmentation */
+            padding-bottom: 6px; /* Légère augmentation */
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .activity-items {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px; /* Légère augmentation */
         }
 
         .activity-item {
             display: grid;
-            grid-template-columns: 60px 1fr;
-            gap: 8px;
-            padding: 6px;
+            grid-template-columns: 70px 1fr; /* Légère augmentation */
+            gap: 10px; /* Légère augmentation */
+            padding: 8px; /* Légère augmentation */
             background: rgba(255, 255, 255, 0.03);
             border-radius: 4px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            min-height: 50px;
+            min-height: 60px; /* Légère augmentation */
         }
 
         .activity-time {
@@ -134,50 +135,50 @@
             justify-content: center;
             background: rgba(96, 165, 250, 0.1);
             border-radius: 4px;
-            padding: 4px;
-            font-size: 10px;
+            padding: 6px; /* Légère augmentation */
+            font-size: 12px; /* Augmentation */
             font-weight: 600;
             color: var(--accent);
             text-align: center;
-            line-height: 1.2;
+            line-height: 1.3; /* Légère augmentation */
         }
 
         .activity-content {
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 4px; /* Légère augmentation */
         }
 
         .activity-module {
             font-weight: 600;
-            font-size: 12px;
-            line-height: 1.2;
+            font-size: 14px; /* Augmentation */
+            line-height: 1.3; /* Légère augmentation */
         }
 
         .activity-trainer {
-            font-size: 11px;
+            font-size: 13px; /* Augmentation */
             color: var(--muted);
-            line-height: 1.2;
+            line-height: 1.3; /* Légère augmentation */
         }
 
         .activity-detail {
-            font-size: 10px;
+            font-size: 12px; /* Augmentation */
             color: var(--muted);
-            line-height: 1.2;
+            line-height: 1.3; /* Légère augmentation */
         }
 
         .activity-location {
-            font-size: 10px;
+            font-size: 12px; /* Augmentation */
             color: var(--muted);
             font-style: italic;
-            line-height: 1.2;
+            line-height: 1.3; /* Légère augmentation */
         }
 
         .badge {
             display: inline-block;
-            padding: 1px 4px;
+            padding: 2px 6px; /* Légère augmentation */
             border-radius: 3px;
-            font-size: 9px;
+            font-size: 11px; /* Augmentation */
             font-weight: 600;
             margin-right: 4px;
         }
@@ -213,15 +214,15 @@
             color: white;
         }
 
-        /* Forms compact */
+        /* Forms légèrement plus grands */
         input, select {
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 6px 8px;
+            padding: 8px 10px; /* Légère augmentation */
             border-radius: 4px;
             color: inherit;
             width: 100%;
-            font-size: 12px;
+            font-size: 14px; /* Augmentation */
         }
 
         /* Correction pour le select - texte visible */
@@ -231,26 +232,26 @@
         }
 
         label {
-            font-size: 11px;
+            font-size: 13px; /* Augmentation */
             color: var(--muted);
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 6px; /* Légère augmentation */
         }
 
         button {
             background: var(--accent);
             border: none;
-            padding: 6px 10px;
+            padding: 8px 12px; /* Légère augmentation */
             border-radius: 4px;
             color: #04233a;
             font-weight: 600;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 13px; /* Augmentation */
         }
 
         .muted {
             color: var(--muted);
-            font-size: 10px;
+            font-size: 12px; /* Augmentation */
         }
 
         footer {
@@ -258,13 +259,13 @@
             left: 12px;
             bottom: 12px;
             color: var(--muted);
-            font-size: 10px;
+            font-size: 12px; /* Augmentation */
         }
 
         /* View controls */
         .view-controls {
             display: flex;
-            gap: 6px;
+            gap: 8px; /* Légère augmentation */
             margin-bottom: 12px;
         }
 
@@ -272,10 +273,10 @@
             background: var(--panel);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--muted);
-            padding: 6px 12px;
+            padding: 8px 14px; /* Légère augmentation */
             border-radius: 4px;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 13px; /* Augmentation */
         }
 
         .view-btn.active {
@@ -284,28 +285,28 @@
             font-weight: 600;
         }
 
-        /* Calendar view compact */
+        /* Calendar view légèrement plus grand */
         .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
+            gap: 6px; /* Légère augmentation */
             margin-top: 12px;
         }
 
         .calendar-day {
             background: var(--panel);
             border-radius: 4px;
-            padding: 4px;
-            min-height: 60px;
+            padding: 6px; /* Légère augmentation */
+            min-height: 70px; /* Légère augmentation */
             border: 1px solid rgba(255, 255, 255, 0.05);
             cursor: pointer;
         }
 
         .calendar-day-header {
             font-weight: 600;
-            font-size: 10px;
+            font-size: 12px; /* Augmentation */
             text-align: center;
-            margin-bottom: 2px;
+            margin-bottom: 4px; /* Légère augmentation */
             color: var(--muted);
         }
 
@@ -314,9 +315,9 @@
         }
 
         .calendar-activity {
-            font-size: 8px;
-            margin-bottom: 1px;
-            padding: 1px 2px;
+            font-size: 10px; /* Légère augmentation */
+            margin-bottom: 2px; /* Légère augmentation */
+            padding: 2px 3px; /* Légère augmentation */
             border-radius: 2px;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -335,16 +336,16 @@
             background: var(--panel);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--muted);
-            padding: 4px 8px;
-            font-size: 10px;
+            padding: 6px 10px; /* Légère augmentation */
+            font-size: 12px; /* Augmentation */
         }
 
         .month-title {
             font-weight: 600;
-            font-size: 14px;
+            font-size: 16px; /* Augmentation */
         }
 
-        /* Modal compact */
+        /* Modal légèrement plus grand */
         .modal {
             display: none;
             position: fixed;
@@ -361,8 +362,8 @@
         .modal-content {
             background: var(--card);
             border-radius: 8px;
-            padding: 12px;
-            max-width: 400px;
+            padding: 16px; /* Légère augmentation */
+            max-width: 450px; /* Légère augmentation */
             width: 90%;
             max-height: 70vh;
             overflow-y: auto;
@@ -372,11 +373,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 10px; /* Légère augmentation */
         }
 
         .modal-title {
-            font-size: 14px;
+            font-size: 16px; /* Augmentation */
             font-weight: 600;
             color: var(--accent);
         }
@@ -385,11 +386,11 @@
             background: none;
             border: none;
             color: var(--muted);
-            font-size: 16px;
+            font-size: 18px; /* Légère augmentation */
             cursor: pointer;
             padding: 0;
-            width: 20px;
-            height: 20px;
+            width: 24px; /* Légère augmentation */
+            height: 24px; /* Légère augmentation */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -397,12 +398,12 @@
 
         .modal-activity-item {
             display: grid;
-            grid-template-columns: 50px 1fr;
-            gap: 6px;
-            padding: 5px;
+            grid-template-columns: 60px 1fr; /* Légère augmentation */
+            gap: 8px; /* Légère augmentation */
+            padding: 7px; /* Légère augmentation */
             background: rgba(255, 255, 255, 0.03);
             border-radius: 3px;
-            margin-bottom: 5px;
+            margin-bottom: 7px; /* Légère augmentation */
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -412,8 +413,8 @@
             justify-content: center;
             background: rgba(96, 165, 250, 0.1);
             border-radius: 3px;
-            padding: 3px;
-            font-size: 9px;
+            padding: 5px; /* Légère augmentation */
+            font-size: 11px; /* Légère augmentation */
             font-weight: 600;
             color: var(--accent);
             text-align: center;
@@ -422,16 +423,16 @@
         .modal-activity-content {
             display: flex;
             flex-direction: column;
-            gap: 1px;
+            gap: 3px; /* Légère augmentation */
         }
 
         .modal-activity-module {
             font-weight: 600;
-            font-size: 11px;
+            font-size: 13px; /* Augmentation */
         }
 
         .modal-activity-meta {
-            font-size: 10px;
+            font-size: 12px; /* Augmentation */
             color: var(--muted);
         }
 
@@ -439,17 +440,17 @@
         .checkbox-container {
             display: flex;
             align-items: flex-start;
-            gap: 6px;
-            margin-top: 2px;
+            gap: 8px; /* Légère augmentation */
+            margin-top: 4px; /* Légère augmentation */
         }
 
         .activity-checkbox {
-            margin-top: 1px;
-            transform: scale(0.8);
+            margin-top: 2px; /* Légère augmentation */
+            transform: scale(0.9); /* Légère augmentation */
         }
 
         .checkbox-label {
-            font-size: 9px;
+            font-size: 11px; /* Augmentation */
             color: var(--muted);
         }
 
@@ -475,8 +476,8 @@
         }
 
         .formateur-item {
-            padding: 6px 8px;
-            font-size: 11px;
+            padding: 8px 10px; /* Légère augmentation */
+            font-size: 13px; /* Augmentation */
             cursor: pointer;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -495,12 +496,12 @@
             overflow-y: auto;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 4px;
-            padding: 4px;
+            padding: 6px; /* Légère augmentation */
         }
 
         .formateur-display-item {
-            font-size: 10px;
-            padding: 3px 4px;
+            font-size: 12px; /* Augmentation */
+            padding: 4px 5px; /* Légère augmentation */
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--muted);
         }
@@ -513,7 +514,7 @@
         .search-btn {
             background: var(--green);
             width: 100%;
-            margin-top: 6px;
+            margin-top: 8px; /* Légère augmentation */
         }
 
         .search-btn:hover {
@@ -526,15 +527,15 @@
         <aside class="sidebar">
             <h1>Planning AIS</h1>
             <div class="panel">
-                <div style="margin-bottom:6px">
+                <div style="margin-bottom:8px">
                     <label>Rechercher</label>
                     <input id="search" placeholder="Module, formateur..." />
                 </div>
-                <div style="display:flex;gap:6px;margin-bottom:6px">
+                <div style="display:flex;gap:8px;margin-bottom:8px">
                     <button id="btnToday">📅 Aujourd'hui</button>
                     <button id="btnNext">⏭️ Suivant</button>
                 </div>
-                <div style="margin-bottom:6px">
+                <div style="margin-bottom:8px">
                     <label>Type</label>
                     <select id="filterType">
                         <option value="">Tous</option>
@@ -547,7 +548,7 @@
                         <option value="Congé">Congé</option>
                     </select>
                 </div>
-                <div style="margin-bottom:6px">
+                <div style="margin-bottom:8px">
                     <label>Formateur</label>
                     <div class="formateur-dropdown">
                         <input id="filterFormateur" placeholder="Choisir un formateur" list="formateurList" />
@@ -560,14 +561,14 @@
             </div>
 
             <div class="panel">
-                <h2 style="font-size:12px;margin-bottom:6px">Navigation</h2>
-                <button id="btnShowAll" style="width:100%;margin-bottom:4px">📊 Toutes activités</button>
+                <h2 style="font-size:14px;margin-bottom:8px">Navigation</h2>
+                <button id="btnShowAll" style="width:100%;margin-bottom:6px">📊 Toutes activités</button>
                 <button id="btnCalendar" style="width:100%">📅 Calendrier</button>
             </div>
 
             <div class="panel">
-                <h2 style="font-size:12px;margin-bottom:6px">Formateurs</h2>
-                <div id="formateursCount" class="muted" style="margin-bottom:4px"></div>
+                <h2 style="font-size:14px;margin-bottom:8px">Formateurs</h2>
+                <div id="formateursCount" class="muted" style="margin-bottom:6px"></div>
                 <div id="formateursList" class="formateurs-container">
                     <!-- Liste des formateurs générée dynamiquement -->
                 </div>
@@ -575,7 +576,7 @@
         </aside>
 
         <main class="main">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
                 <h1 id="mainTitle">Planning AIS 2025-2026</h1>
                 <div class="muted" id="statusText">Chargement...</div>
             </div>
@@ -1115,4 +1116,3 @@
     </script>
 </body>
 </html>
-
