@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planning AIS 2025-2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #0f1724;
             --card: #0b1220;
-            --muted: #9aa4b2;
+            --muted: #cbd5e1;
             --accent: #60a5fa;
-            --panel: #071226;
+            --panel: #1e293b;
             --green: #10b981;
             --yellow: #f59e0b;
             --red: #ef4444;
@@ -27,7 +28,7 @@
 
         * {
             box-sizing: border-box;
-            font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
+            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -35,152 +36,175 @@
         html, body {
             height: 100%;
             background: linear-gradient(180deg, #051524 0%, #07172b 100%);
-            color: #e6eef8;
-            font-size: 14px; /* Augmentation de la taille de base */
+            color: #f1f5f9;
+            font-size: 16px;
+            line-height: 1.5;
         }
 
         .app {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 12px;
-            padding: 12px;
+            grid-template-columns: 320px 1fr;
+            gap: 16px;
+            padding: 16px;
             height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .sidebar {
             background: var(--card);
-            border-radius: 8px;
-            padding: 12px;
-            box-shadow: 0 4px 12px rgba(2, 6, 23, .6);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(2, 6, 23, .7);
             overflow: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .main {
             background: var(--card);
-            border-radius: 8px;
-            padding: 12px;
-            box-shadow: 0 4px 12px rgba(2, 6, 23, .6);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(2, 6, 23, .7);
             overflow: auto;
+            display: flex;
+            flex-direction: column;
         }
 
         .panel {
             background: var(--panel);
-            padding: 12px; /* Légère augmentation */
-            border-radius: 6px;
-            margin-bottom: 12px; /* Légère augmentation */
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         h1 {
-            margin: 0 0 8px 0; /* Légère augmentation */
-            font-size: 18px; /* Augmentation */
-            font-weight: 600;
+            margin: 0 0 12px 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: #f8fafc;
         }
 
         h2 {
-            margin: 0 0 8px 0; /* Légère augmentation */
-            font-size: 16px; /* Augmentation */
+            margin: 0 0 12px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #f8fafc;
         }
 
-        /* Activity cards - LÉGÈREMENT PLUS GRANDES */
+        /* Activity cards - MEILLEURE LISIBILITÉ */
         .activity-list {
             display: flex;
             flex-direction: column;
-            gap: 8px; /* Légère augmentation */
+            gap: 16px;
         }
 
         .activity-card {
             background: var(--panel);
-            padding: 12px; /* Légère augmentation */
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .activity-card.today {
-            border-left: 3px solid var(--green);
+            border-left: 5px solid var(--green);
+            background: linear-gradient(to right, rgba(16, 185, 129, 0.05), var(--panel));
         }
 
         .activity-card.next {
-            border-left: 3px solid var(--yellow);
+            border-left: 5px solid var(--yellow);
+            background: linear-gradient(to right, rgba(245, 158, 11, 0.05), var(--panel));
         }
 
         .activity-date {
-            font-weight: 600;
-            font-size: 15px; /* Augmentation */
+            font-weight: 700;
+            font-size: 18px;
             color: var(--accent);
-            margin-bottom: 10px; /* Légère augmentation */
-            padding-bottom: 6px; /* Légère augmentation */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .activity-items {
             display: flex;
             flex-direction: column;
-            gap: 8px; /* Légère augmentation */
+            gap: 12px;
         }
 
         .activity-item {
             display: grid;
-            grid-template-columns: 70px 1fr; /* Légère augmentation */
-            gap: 10px; /* Légère augmentation */
-            padding: 8px; /* Légère augmentation */
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            min-height: 60px; /* Légère augmentation */
+            grid-template-columns: 90px 1fr;
+            gap: 14px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
+        }
+
+        .activity-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .activity-time {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(96, 165, 250, 0.1);
-            border-radius: 4px;
-            padding: 6px; /* Légère augmentation */
-            font-size: 12px; /* Augmentation */
+            background: rgba(96, 165, 250, 0.15);
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--accent);
             text-align: center;
-            line-height: 1.3; /* Légère augmentation */
+            line-height: 1.4;
+            border: 1px solid rgba(96, 165, 250, 0.2);
         }
 
         .activity-content {
             display: flex;
             flex-direction: column;
-            gap: 4px; /* Légère augmentation */
+            gap: 6px;
         }
 
         .activity-module {
             font-weight: 600;
-            font-size: 14px; /* Augmentation */
-            line-height: 1.3; /* Légère augmentation */
+            font-size: 16px;
+            line-height: 1.4;
+            color: #f8fafc;
         }
 
         .activity-trainer {
-            font-size: 13px; /* Augmentation */
+            font-size: 14px;
             color: var(--muted);
-            line-height: 1.3; /* Légère augmentation */
+            line-height: 1.4;
+            font-weight: 500;
         }
 
         .activity-detail {
-            font-size: 12px; /* Augmentation */
+            font-size: 14px;
             color: var(--muted);
-            line-height: 1.3; /* Légère augmentation */
+            line-height: 1.4;
         }
 
         .activity-location {
-            font-size: 12px; /* Augmentation */
+            font-size: 13px;
             color: var(--muted);
             font-style: italic;
-            line-height: 1.3; /* Légère augmentation */
+            line-height: 1.4;
         }
 
         .badge {
             display: inline-block;
-            padding: 2px 6px; /* Légère augmentation */
-            border-radius: 3px;
-            font-size: 11px; /* Augmentation */
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
             font-weight: 600;
-            margin-right: 4px;
+            margin-right: 6px;
         }
 
         /* type colors */
@@ -214,111 +238,166 @@
             color: white;
         }
 
-        /* Forms légèrement plus grands */
+        /* Forms améliorés */
         input, select {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 8px 10px; /* Légère augmentation */
-            border-radius: 4px;
-            color: inherit;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 14px;
+            border-radius: 6px;
+            color: #f1f5f9;
             width: 100%;
-            font-size: 14px; /* Augmentation */
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
         }
 
         /* Correction pour le select - texte visible */
         select option {
             background: var(--panel);
-            color: #e6eef8;
+            color: #f1f5f9;
         }
 
         label {
-            font-size: 13px; /* Augmentation */
+            font-size: 14px;
             color: var(--muted);
             display: block;
-            margin-bottom: 6px; /* Légère augmentation */
+            margin-bottom: 8px;
+            font-weight: 500;
         }
 
         button {
             background: var(--accent);
             border: none;
-            padding: 8px 12px; /* Légère augmentation */
-            border-radius: 4px;
+            padding: 12px 16px;
+            border-radius: 6px;
             color: #04233a;
             font-weight: 600;
             cursor: pointer;
-            font-size: 13px; /* Augmentation */
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        button:hover {
+            background: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
         }
 
         .muted {
             color: var(--muted);
-            font-size: 12px; /* Augmentation */
+            font-size: 14px;
         }
 
         footer {
             position: fixed;
-            left: 12px;
-            bottom: 12px;
+            left: 16px;
+            bottom: 16px;
             color: var(--muted);
-            font-size: 12px; /* Augmentation */
+            font-size: 12px;
+            background: rgba(15, 23, 36, 0.8);
+            padding: 6px 12px;
+            border-radius: 4px;
         }
 
         /* View controls */
         .view-controls {
             display: flex;
-            gap: 8px; /* Légère augmentation */
-            margin-bottom: 12px;
+            gap: 10px;
+            margin-bottom: 16px;
         }
 
         .view-btn {
             background: var(--panel);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--muted);
-            padding: 8px 14px; /* Légère augmentation */
-            border-radius: 4px;
+            padding: 10px 16px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 13px; /* Augmentation */
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .view-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #f1f5f9;
         }
 
         .view-btn.active {
             background: var(--accent);
             color: #04233a;
             font-weight: 600;
+            border-color: var(--accent);
         }
 
-        /* Calendar view légèrement plus grand */
+        /* Calendar view amélioré */
         .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 6px; /* Légère augmentation */
-            margin-top: 12px;
+            gap: 8px;
+            margin-top: 16px;
         }
 
         .calendar-day {
             background: var(--panel);
-            border-radius: 4px;
-            padding: 6px; /* Légère augmentation */
-            min-height: 70px; /* Légère augmentation */
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 10px;
+            min-height: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calendar-day:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
         }
 
         .calendar-day-header {
             font-weight: 600;
-            font-size: 12px; /* Augmentation */
+            font-size: 12px;
             text-align: center;
-            margin-bottom: 4px; /* Légère augmentation */
+            margin-bottom: 6px;
             color: var(--muted);
         }
 
         .calendar-day.today {
-            border: 1px solid var(--accent);
+            border: 2px solid var(--accent);
+            background: rgba(96, 165, 250, 0.1);
+        }
+
+        .calendar-day-number {
+            font-weight: 700;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 6px;
+            color: #f8fafc;
+        }
+
+        .calendar-activities {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
         }
 
         .calendar-activity {
-            font-size: 10px; /* Légère augmentation */
-            margin-bottom: 2px; /* Légère augmentation */
-            padding: 2px 3px; /* Légère augmentation */
-            border-radius: 2px;
+            font-size: 11px;
+            padding: 3px 5px;
+            border-radius: 3px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -329,23 +408,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .month-nav button {
             background: var(--panel);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--muted);
-            padding: 6px 10px; /* Légère augmentation */
-            font-size: 12px; /* Augmentation */
+            padding: 8px 12px;
+            font-size: 14px;
         }
 
         .month-title {
-            font-weight: 600;
-            font-size: 16px; /* Augmentation */
+            font-weight: 700;
+            font-size: 18px;
+            color: #f8fafc;
         }
 
-        /* Modal légèrement plus grand */
+        /* Modal amélioré */
         .modal {
             display: none;
             position: fixed;
@@ -353,32 +433,37 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(4px);
         }
 
         .modal-content {
             background: var(--card);
-            border-radius: 8px;
-            padding: 16px; /* Légère augmentation */
-            max-width: 450px; /* Légère augmentation */
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 500px;
             width: 90%;
-            max-height: 70vh;
+            max-height: 80vh;
             overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px; /* Légère augmentation */
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .modal-title {
-            font-size: 16px; /* Augmentation */
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
             color: var(--accent);
         }
 
@@ -386,71 +471,79 @@
             background: none;
             border: none;
             color: var(--muted);
-            font-size: 18px; /* Légère augmentation */
+            font-size: 24px;
             cursor: pointer;
             padding: 0;
-            width: 24px; /* Légère augmentation */
-            height: 24px; /* Légère augmentation */
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
         }
 
         .modal-activity-item {
             display: grid;
-            grid-template-columns: 60px 1fr; /* Légère augmentation */
-            gap: 8px; /* Légère augmentation */
-            padding: 7px; /* Légère augmentation */
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 3px;
-            margin-bottom: 7px; /* Légère augmentation */
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            grid-template-columns: 70px 1fr;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .modal-activity-time {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(96, 165, 250, 0.1);
-            border-radius: 3px;
-            padding: 5px; /* Légère augmentation */
-            font-size: 11px; /* Légère augmentation */
+            background: rgba(96, 165, 250, 0.15);
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--accent);
             text-align: center;
+            border: 1px solid rgba(96, 165, 250, 0.2);
         }
 
         .modal-activity-content {
             display: flex;
             flex-direction: column;
-            gap: 3px; /* Légère augmentation */
+            gap: 4px;
         }
 
         .modal-activity-module {
             font-weight: 600;
-            font-size: 13px; /* Augmentation */
+            font-size: 15px;
+            color: #f8fafc;
         }
 
         .modal-activity-meta {
-            font-size: 12px; /* Augmentation */
+            font-size: 13px;
             color: var(--muted);
         }
 
         /* Checkbox style */
         .checkbox-container {
             display: flex;
-            align-items: flex-start;
-            gap: 8px; /* Légère augmentation */
-            margin-top: 4px; /* Légère augmentation */
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
         }
 
         .activity-checkbox {
-            margin-top: 2px; /* Légère augmentation */
-            transform: scale(0.9); /* Légère augmentation */
+            transform: scale(1.1);
         }
 
         .checkbox-label {
-            font-size: 11px; /* Augmentation */
+            font-size: 13px;
             color: var(--muted);
         }
 
@@ -467,19 +560,21 @@
             left: 0;
             right: 0;
             background: var(--panel);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            max-height: 150px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            max-height: 200px;
             overflow-y: auto;
             z-index: 100;
             display: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
         .formateur-item {
-            padding: 8px 10px; /* Légère augmentation */
-            font-size: 13px; /* Augmentation */
+            padding: 10px 12px;
+            font-size: 14px;
             cursor: pointer;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
         }
 
         .formateur-item:hover {
@@ -492,18 +587,24 @@
 
         /* Style pour la liste des formateurs */
         .formateurs-container {
-            max-height: 120px;
+            max-height: 150px;
             overflow-y: auto;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            padding: 6px; /* Légère augmentation */
+            border-radius: 6px;
+            padding: 8px;
         }
 
         .formateur-display-item {
-            font-size: 12px; /* Augmentation */
-            padding: 4px 5px; /* Légère augmentation */
+            font-size: 14px;
+            padding: 8px 10px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--muted);
+            transition: all 0.2s ease;
+        }
+
+        .formateur-display-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #f1f5f9;
         }
 
         .formateur-display-item:last-child {
@@ -514,11 +615,70 @@
         .search-btn {
             background: var(--green);
             width: 100%;
-            margin-top: 8px; /* Légère augmentation */
+            margin-top: 12px;
         }
 
         .search-btn:hover {
             background: #0da271;
+            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Header principal */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .app {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            
+            .sidebar {
+                order: 2;
+            }
+            
+            .main {
+                order: 1;
+            }
+        }
+
+        /* Animation de chargement */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Statut */
+        .status {
+            background: rgba(96, 165, 250, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--accent);
+            border: 1px solid rgba(96, 165, 250, 0.2);
         }
     </style>
 </head>
@@ -527,18 +687,18 @@
         <aside class="sidebar">
             <h1>Planning AIS</h1>
             <div class="panel">
-                <div style="margin-bottom:8px">
+                <div style="margin-bottom:12px">
                     <label>Rechercher</label>
                     <input id="search" placeholder="Module, formateur..." />
                 </div>
-                <div style="display:flex;gap:8px;margin-bottom:8px">
+                <div style="display:flex;gap:10px;margin-bottom:12px">
                     <button id="btnToday">📅 Aujourd'hui</button>
                     <button id="btnNext">⏭️ Suivant</button>
                 </div>
-                <div style="margin-bottom:8px">
-                    <label>Type</label>
+                <div style="margin-bottom:12px">
+                    <label>Type d'activité</label>
                     <select id="filterType">
-                        <option value="">Tous</option>
+                        <option value="">Tous les types</option>
                         <option value="AF">AF - Formation en Autonomie</option>
                         <option value="TUT">TUT - Cours en Tutorat</option>
                         <option value="RGP">RGP - Regroupement</option>
@@ -548,7 +708,7 @@
                         <option value="Congé">Congé</option>
                     </select>
                 </div>
-                <div style="margin-bottom:8px">
+                <div style="margin-bottom:12px">
                     <label>Formateur</label>
                     <div class="formateur-dropdown">
                         <input id="filterFormateur" placeholder="Choisir un formateur" list="formateurList" />
@@ -561,14 +721,14 @@
             </div>
 
             <div class="panel">
-                <h2 style="font-size:14px;margin-bottom:8px">Navigation</h2>
-                <button id="btnShowAll" style="width:100%;margin-bottom:6px">📊 Toutes activités</button>
-                <button id="btnCalendar" style="width:100%">📅 Calendrier</button>
+                <h2>Navigation</h2>
+                <button id="btnShowAll" style="width:100%;margin-bottom:8px">📊 Toutes les activités</button>
+                <button id="btnCalendar" style="width:100%">📅 Vue calendrier</button>
             </div>
 
             <div class="panel">
-                <h2 style="font-size:14px;margin-bottom:8px">Formateurs</h2>
-                <div id="formateursCount" class="muted" style="margin-bottom:6px"></div>
+                <h2>Formateurs</h2>
+                <div id="formateursCount" class="muted" style="margin-bottom:8px"></div>
                 <div id="formateursList" class="formateurs-container">
                     <!-- Liste des formateurs générée dynamiquement -->
                 </div>
@@ -576,19 +736,19 @@
         </aside>
 
         <main class="main">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div class="main-header">
                 <h1 id="mainTitle">Planning AIS 2025-2026</h1>
-                <div class="muted" id="statusText">Chargement...</div>
+                <div class="status" id="statusText">Chargement...</div>
             </div>
 
             <div class="view-controls">
-                <button class="view-btn active" data-view="list">📋 Liste</button>
-                <button class="view-btn" data-view="calendar">📅 Calendrier</button>
+                <button class="view-btn active" data-view="list">📋 Vue liste</button>
+                <button class="view-btn" data-view="calendar">📅 Vue calendrier</button>
             </div>
 
             <div id="contentArea">
-                <div style="display:flex;justify-content:center;align-items:center;padding:20px">
-                    <div class="muted">Chargement des activités...</div>
+                <div class="loading">
+                    <div class="loading-spinner"></div>
                 </div>
             </div>
         </main>
@@ -742,12 +902,11 @@
             generateFormateursList();
             showTodayActivities();
             setupEventListeners();
-            updateStatus(`${activities.length} activités`);
+            updateStatus(`${activities.length} activités chargées`);
         }
 
         // Configurer les écouteurs d'événements
         function setupEventListeners() {
-            // CORRECTION : Ajout des écouteurs pour tous les boutons
             document.getElementById('btnToday').addEventListener('click', showTodayActivities);
             document.getElementById('btnNext').addEventListener('click', showNextActivity);
             document.getElementById('btnShowAll').addEventListener('click', showAllActivities);
@@ -774,7 +933,7 @@
             });
         }
 
-        // Afficher les activités d'aujourd'hui - CORRIGÉ
+        // Afficher les activités d'aujourd'hui
         function showTodayActivities() {
             currentView = 'today';
             const today = new Date().toISOString().split('T')[0];
@@ -787,7 +946,6 @@
                 refreshDisplay();
                 updateStatus(`${todayActivities.length} activité(s) aujourd'hui`);
             } else {
-                // Afficher le message quand il n'y a pas d'activités aujourd'hui
                 document.getElementById('contentArea').innerHTML = `
                     <div class="activity-card">
                         <div class="activity-date">Aucune activité aujourd'hui</div>
@@ -798,7 +956,7 @@
             }
         }
 
-        // Afficher la prochaine activité - CORRIGÉ
+        // Afficher la prochaine activité
         function showNextActivity() {
             currentView = 'next';
             const today = new Date().toISOString().split('T')[0];
@@ -809,7 +967,7 @@
                 const firstFutureDate = futureActivities[0].date;
                 filteredActivities = futureActivities.filter(activity => activity.date === firstFutureDate);
                 refreshDisplay();
-                updateStatus(`Prochaine activité le ${firstFutureDate}`);
+                updateStatus(`Prochaine activité le ${formatDate(firstFutureDate)}`);
             } else {
                 document.getElementById('contentArea').innerHTML = `
                     <div class="activity-card">
@@ -821,13 +979,17 @@
             }
         }
 
-        // Afficher toutes les activités - CORRIGÉ
+        // Formater une date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        }
+
+        // Afficher toutes les activités
         function showAllActivities() {
             currentView = 'all';
             document.getElementById('mainTitle').textContent = "Toutes les activités";
-            // CORRECTION : Réinitialiser les filtres pour montrer TOUTES les activités
             filteredActivities = [...activities];
-            // CORRECTION : Réinitialiser les champs de recherche
             document.getElementById('search').value = '';
             document.getElementById('filterType').value = '';
             document.getElementById('filterFormateur').value = '';
@@ -836,20 +998,16 @@
             updateStatus(`${activities.length} activités au total`);
         }
 
-        // Basculer entre la vue liste et calendrier - CORRIGÉ
+        // Basculer entre la vue liste et calendrier
         function toggleCalendarView() {
-            // Basculer entre liste et calendrier
             currentDisplayMode = currentDisplayMode === 'list' ? 'calendar' : 'list';
             
-            // Mettre à jour les boutons de vue
             document.querySelectorAll('.view-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-view') === currentDisplayMode);
             });
             
-            // Rafraîchir l'affichage
             refreshDisplay();
             
-            // Mettre à jour le statut
             updateStatus(currentDisplayMode === 'calendar' ? 'Vue calendrier' : 'Vue liste');
         }
 
@@ -862,7 +1020,7 @@
             }
         }
 
-        // Rendu des activités en mode liste - DESIGN COMPACT
+        // Rendu des activités en mode liste
         function renderActivities(activitiesToRender) {
             const contentArea = document.getElementById('contentArea');
             
@@ -892,21 +1050,17 @@
             
             sortedDates.forEach(date => {
                 const dateActivities = activitiesByDate[date];
-                const dateObj = new Date(date);
                 const today = new Date().toISOString().split('T')[0];
                 
                 const isToday = date === today;
                 const isNext = currentView === 'next' && sortedDates[0] === date;
                 
-                const dateStr = dateObj.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-                
                 html += `
                     <div class="activity-card ${isToday ? 'today' : ''} ${isNext ? 'next' : ''}">
-                        <div class="activity-date">${dateStr}</div>
+                        <div class="activity-date">${formatDate(date)}</div>
                         <div class="activity-items">
                 `;
                 
-                // Afficher TOUTES les activités de la date
                 dateActivities.forEach(activity => {
                     html += renderActivityItem(activity);
                 });
@@ -920,7 +1074,7 @@
             contentArea.innerHTML = html;
         }
 
-        // Fonction pour rendre un item d'activité COMPACT
+        // Fonction pour rendre un item d'activité
         function renderActivityItem(activity) {
             const typeClass = `type-${activity.type}`;
             const timeDisplay = activity.horaires ? activity.horaires.replace(' - ', '<br>') : '';
@@ -954,9 +1108,9 @@
             
             let html = `
                 <div class="month-nav">
-                    <button id="prevMonth">◀</button>
+                    <button id="prevMonth">◀ Mois précédent</button>
                     <div class="month-title">${firstDay.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}</div>
-                    <button id="nextMonth">▶</button>
+                    <button id="nextMonth">Mois suivant ▶</button>
                 </div>
                 <div class="calendar">
                     <div class="calendar-day-header">Lun</div>
@@ -980,11 +1134,12 @@
                 const isToday = dateStr === today;
                 
                 html += `<div class="calendar-day ${isToday ? 'today' : ''}" data-date="${dateStr}">`;
-                html += `<div class="calendar-day-header">${day}</div>`;
+                html += `<div class="calendar-day-number">${day}</div>`;
+                html += `<div class="calendar-activities">`;
                 
                 dayActivities.forEach(activity => {
                     const typeClass = `type-${activity.type}`;
-                    const shortModule = activity.module ? (activity.module.length > 10 ? activity.module.substring(0, 10) + '...' : activity.module) : '';
+                    const shortModule = activity.module ? (activity.module.length > 12 ? activity.module.substring(0, 12) + '...' : activity.module) : '';
                     
                     html += `
                         <div class="calendar-activity ${typeClass}" title="${esc(activity.module || '')}">
@@ -993,7 +1148,7 @@
                     `;
                 });
                 
-                html += `</div>`;
+                html += `</div></div>`;
             }
             
             html += `</div>`;
@@ -1029,10 +1184,8 @@
         // Afficher les détails d'une date dans le modal
         function showDateDetails(date) {
             const dateActivities = activities.filter(activity => activity.date === date);
-            const dateObj = new Date(date);
-            const dateStr = dateObj.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             
-            document.getElementById('modalDateTitle').textContent = dateStr;
+            document.getElementById('modalDateTitle').textContent = formatDate(date);
             
             let modalHtml = '';
             
@@ -1071,11 +1224,10 @@
 
         // Gérer la recherche automatique
         function handleSearch(e) {
-            // La recherche se lance automatiquement à chaque changement
             performSearch();
         }
 
-        // Lancer la recherche - NOUVEAU
+        // Lancer la recherche
         function performSearch() {
             const searchTerm = document.getElementById('search').value.toLowerCase();
             const typeFilter = document.getElementById('filterType').value;
