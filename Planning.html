@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning AIS 2025-2026</title>
+    <style>
+        :root {
+            --bg: #0f1724;
+            --card: #0b1220;
+            --muted: #9aa4b2;
+            --accent: #60a5fa;
+            --panel: #071226;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+            --af-color: #10b981;
+            --tut-color: #f59e0b;
+            --rgp-color: #ef4444;
+            --ferie-color: #8b5cf6;
+            --stage-color: #8b5cf6;
+            --autre-color: #9ca3af;
+            color-scheme: dark;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            background: linear-gradient(180deg, #051524 0%, #07172b 100%);
+            color: #e6eef8;
+        }
+
+        .app {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 12px;
+            padding: 12px;
+            height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--card);
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 12px rgba(2, 6, 23, .6);
+            overflow: auto;
+        }
+
+        .main {
+            background: var(--card);
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 12px rgba(2, 6, 23, .6);
+            overflow: auto;
+        }
+
+        .panel {
+            background: var(--panel);
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            margin: 0 0 6px 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        h2 {
+            margin: 0 0 6px 0;
+            font-size: 14px;
+        }
+
+        /* Activity cards - TRÈS COMPACT */
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .activity-card {
+            background: var(--panel);
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .activity-card.today {
+            border-left: 3px solid var(--green);
+        }
+
+        .activity-card.next {
+            border-left: 3px solid var(--yellow);
+        }
+
+        .activity-date {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .activity-items {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .activity-item {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 8px;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            min-height: 50px;
+        }
+
+        .activity-time {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 4px;
+            padding: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--accent);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .activity-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .activity-module {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 1.2;
+        }
+
+        .activity-trainer {
+            font-size: 11px;
+            color: var(--muted);
+            line-height: 1.2;
+        }
+
+        .activity-detail {
+            font-size: 10px;
+            color: var(--muted);
+            line-height: 1.2;
+        }
+
+        .activity-location {
+            font-size: 10px;
+            color: var(--muted);
+            font-style: italic;
+            line-height: 1.2;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 9px;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        /* type colors */
+        .type-AF {
+            background: var(--af-color);
+            color: white;
+        }
+
+        .type-TUT {
+            background: var(--tut-color);
+            color: white;
+        }
+
+        .type-RGP {
+            background: var(--rgp-color);
+            color: white;
+        }
+
+        .type-Férié {
+            background: var(--ferie-color);
+            color: white;
+        }
+
+        .type-Stage {
+            background: var(--stage-color);
+            color: white;
+        }
+
+        .type-Libéré, .type-Congé {
+            background: var(--autre-color);
+            color: white;
+        }
+
+        /* Forms compact */
+        input, select {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 6px 8px;
+            border-radius: 4px;
+            color: inherit;
+            width: 100%;
+            font-size: 12px;
+        }
+
+        /* Correction pour le select - texte visible */
+        select option {
+            background: var(--panel);
+            color: #e6eef8;
+        }
+
+        label {
+            font-size: 11px;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        button {
+            background: var(--accent);
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            color: #04233a;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        footer {
+            position: fixed;
+            left: 12px;
+            bottom: 12px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        /* View controls */
+        .view-controls {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .view-btn {
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--muted);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        .view-btn.active {
+            background: var(--accent);
+            color: #04233a;
+            font-weight: 600;
+        }
+
+        /* Calendar view compact */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            margin-top: 12px;
+        }
+
+        .calendar-day {
+            background: var(--panel);
+            border-radius: 4px;
+            padding: 4px;
+            min-height: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+        }
+
+        .calendar-day-header {
+            font-weight: 600;
+            font-size: 10px;
+            text-align: center;
+            margin-bottom: 2px;
+            color: var(--muted);
+        }
+
+        .calendar-day.today {
+            border: 1px solid var(--accent);
+        }
+
+        .calendar-activity {
+            font-size: 8px;
+            margin-bottom: 1px;
+            padding: 1px 2px;
+            border-radius: 2px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Month navigation */
+        .month-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .month-nav button {
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--muted);
+            padding: 4px 8px;
+            font-size: 10px;
+        }
+
+        .month-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Modal compact */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--card);
+            border-radius: 8px;
+            padding: 12px;
+            max-width: 400px;
+            width: 90%;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .modal-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-activity-item {
+            display: grid;
+            grid-template-columns: 50px 1fr;
+            gap: 6px;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 3px;
+            margin-bottom: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .modal-activity-time {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 3px;
+            padding: 3px;
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .modal-activity-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .modal-activity-module {
+            font-weight: 600;
+            font-size: 11px;
+        }
+
+        .modal-activity-meta {
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        /* Checkbox style */
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            margin-top: 2px;
+        }
+
+        .activity-checkbox {
+            margin-top: 1px;
+            transform: scale(0.8);
+        }
+
+        .checkbox-label {
+            font-size: 9px;
+            color: var(--muted);
+        }
+
+        /* Formateur dropdown */
+        .formateur-dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .formateur-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            max-height: 150px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+        }
+
+        .formateur-item {
+            padding: 6px 8px;
+            font-size: 11px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .formateur-item:hover {
+            background: rgba(96, 165, 250, 0.1);
+        }
+
+        .formateur-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Style pour la liste des formateurs */
+        .formateurs-container {
+            max-height: 120px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 4px;
+        }
+
+        .formateur-display-item {
+            font-size: 10px;
+            padding: 3px 4px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--muted);
+        }
+
+        .formateur-display-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Bouton de recherche */
+        .search-btn {
+            background: var(--green);
+            width: 100%;
+            margin-top: 6px;
+        }
+
+        .search-btn:hover {
+            background: #0da271;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <h1>Planning AIS</h1>
+            <div class="panel">
+                <div style="margin-bottom:6px">
+                    <label>Rechercher</label>
+                    <input id="search" placeholder="Module, formateur..." />
+                </div>
+                <div style="display:flex;gap:6px;margin-bottom:6px">
+                    <button id="btnToday">📅 Aujourd'hui</button>
+                    <button id="btnNext">⏭️ Suivant</button>
+                </div>
+                <div style="margin-bottom:6px">
+                    <label>Type</label>
+                    <select id="filterType">
+                        <option value="">Tous</option>
+                        <option value="AF">AF - Formation en Autonomie</option>
+                        <option value="TUT">TUT - Cours en Tutorat</option>
+                        <option value="RGP">RGP - Regroupement</option>
+                        <option value="Férié">Férié</option>
+                        <option value="Stage">Stage</option>
+                        <option value="Libéré">Libéré</option>
+                        <option value="Congé">Congé</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:6px">
+                    <label>Formateur</label>
+                    <div class="formateur-dropdown">
+                        <input id="filterFormateur" placeholder="Choisir un formateur" list="formateurList" />
+                        <datalist id="formateurList">
+                            <!-- Liste générée dynamiquement -->
+                        </datalist>
+                    </div>
+                </div>
+                <button id="btnSearch" class="search-btn">🔍 Lancer la recherche</button>
+            </div>
+
+            <div class="panel">
+                <h2 style="font-size:12px;margin-bottom:6px">Navigation</h2>
+                <button id="btnShowAll" style="width:100%;margin-bottom:4px">📊 Toutes activités</button>
+                <button id="btnCalendar" style="width:100%">📅 Calendrier</button>
+            </div>
+
+            <div class="panel">
+                <h2 style="font-size:12px;margin-bottom:6px">Formateurs</h2>
+                <div id="formateursCount" class="muted" style="margin-bottom:4px"></div>
+                <div id="formateursList" class="formateurs-container">
+                    <!-- Liste des formateurs générée dynamiquement -->
+                </div>
+            </div>
+        </aside>
+
+        <main class="main">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                <h1 id="mainTitle">Planning AIS 2025-2026</h1>
+                <div class="muted" id="statusText">Chargement...</div>
+            </div>
+
+            <div class="view-controls">
+                <button class="view-btn active" data-view="list">📋 Liste</button>
+                <button class="view-btn" data-view="calendar">📅 Calendrier</button>
+            </div>
+
+            <div id="contentArea">
+                <div style="display:flex;justify-content:center;align-items:center;padding:20px">
+                    <div class="muted">Chargement des activités...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal pour les détails de date -->
+    <div id="dateModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalDateTitle">Détails</div>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <footer>Planning AIS — Version Web (El azhari Amazzale Abdelhadi)</footer>
+
+    <script>
+        // Données extraites du fichier Excel
+        const activities = [
+            { date: "2025-11-06", horaires: "10:00 - 12:00", module: "Accueil-démarrage", type: "RGP", formateur: "Damien BOUTONNET", détail: "Toulouse", ligne: 2 },
+            { date: "2025-11-06", horaires: "13:30 - 16:30", module: "Accueil-démarrage", type: "RGP", formateur: "Damien BOUTONNET", détail: "Toulouse", ligne: 3 },
+            { date: "2025-11-07", horaires: "09:00 - 12:30", module: "Tests de positionnement", type: "AF", formateur: "Damien BOUTONNET", détail: "QCM en autonomie", ligne: 4 },
+            { date: "2025-11-07", horaires: "13:30 - 17:00", module: "Metier et environnement", type: "AF", formateur: "Damien BOUTONNET", détail: "Sensibilisation", ligne: 5 },
+            { date: "2025-11-10", horaires: "09:00 - 12:30", module: "Entretiens individuels", type: "TUT", formateur: "Damien BOUTONNET", détail: "Retours tests positionnement", ligne: 6 },
+            { date: "2025-11-10", horaires: "13:30 - 17:00", module: "Entretiens individuels", type: "TUT", formateur: "Damien BOUTONNET", détail: "Retours tests positionnement", ligne: 7 },
+            { date: "2025-11-11", horaires: "", module: "", type: "Férié", formateur: "", détail: "Armistice 1918", ligne: 8 },
+            { date: "2025-11-12", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "TUT", formateur: "Benjamin ROY", détail: "Binaire + logique + masque + archi machine + OS", ligne: 10 },
+            { date: "2025-11-12", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "TUT", formateur: "Benjamin ROY", détail: "Binaire + logique + masque + archi machine + OS", ligne: 11 },
+            { date: "2025-11-13", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "TUT", formateur: "Benjamin ROY", détail: "Binaire + logique + masque + archi machine + OS", ligne: 12 },
+            { date: "2025-11-13", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "TUT", formateur: "Benjamin ROY", détail: "Binaire + logique + masque + archi machine + OS", ligne: 13 },
+            { date: "2025-11-14", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "TUT", formateur: "Benjamin ROY", détail: "Binaire + logique + masque + archi machine + OS", ligne: 14 },
+            { date: "2025-11-14", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "TUT", formateur: "Benjamin ROY", détail: "Binaire + logique + masque + archi machine + OS", ligne: 15 },
+            { date: "2025-11-17", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "TUT", formateur: "Benoit LACOMBAT", détail: "Stratégie de recherche et IA", ligne: 16 },
+            { date: "2025-11-17", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "TUT", formateur: "Benoit LACOMBAT", détail: "Stratégie de recherche et IA", ligne: 17 },
+            { date: "2025-11-18", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "AF", formateur: "Benjamin ROY", détail: "Binaire + logique + masque + archi machine + OS", ligne: 18 },
+            { date: "2025-11-18", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "AF", formateur: "Benjamin ROY", détail: "Binaire + logique + masque + archi machine + OS", ligne: 19 },
+            { date: "2025-11-19", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "TUT", formateur: "Benjamin ROY", détail: "Algorithmie", ligne: 20 },
+            { date: "2025-11-19", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "TUT", formateur: "Benjamin ROY", détail: "Algorithmie", ligne: 21 },
+            { date: "2025-11-20", horaires: "09:00 - 12:30", module: "Organisation et gestion du temps", type: "TUT", formateur: "Cécile BIROCHAU", détail: "", ligne: 22 },
+            { date: "2025-11-20", horaires: "13:30 - 17:00", module: "Organisation et gestion du temps", type: "TUT", formateur: "Cécile BIROCHAU", détail: "", ligne: 23 },
+            { date: "2025-11-21", horaires: "09:00 - 12:30", module: "Scripts et automatisations", type: "TUT", formateur: "Benjamin ROY", détail: "Algorithmie", ligne: 24 },
+            { date: "2025-11-21", horaires: "13:30 - 17:00", module: "Scripts et automatisations", type: "TUT", formateur: "Benjamin ROY", détail: "Algorithmie", ligne: 25 },
+            { date: "2025-11-24", horaires: "09:00 - 12:30", module: "Prépa certification", type: "TUT", formateur: "Cédric CHAPPERT", détail: "Le titre RNCP", ligne: 26 },
+            { date: "2025-11-24", horaires: "13:30 - 17:00", module: "Prépa certification", type: "AF", formateur: "Cédric CHAPPERT", détail: "", ligne: 27 },
+            { date: "2025-11-25", horaires: "09:00 - 12:30", module: "Scripts et automatisations", type: "TUT", formateur: "Benjamin ROY", détail: "Algorithmie en python", ligne: 28 },
+            { date: "2025-11-25", horaires: "13:30 - 17:00", module: "Scripts et automatisations", type: "TUT", formateur: "Benjamin ROY", détail: "Algorithmie en python", ligne: 29 },
+            { date: "2025-11-26", horaires: "09:00 - 12:30", module: "Scripts et automatisations", type: "TUT", formateur: "Benjamin ROY", détail: "Algorithmie en python", ligne: 30 },
+            { date: "2025-11-26", horaires: "13:30 - 17:00", module: "Scripts et automatisations", type: "TUT", formateur: "Benjamin ROY", détail: "Algorithmie en python", ligne: 31 },
+            { date: "2025-11-27", horaires: "09:00 - 12:30", module: "Scripts et automatisations", type: "AF", formateur: "Benjamin ROY", détail: "Algorithmie en python", ligne: 32 },
+            { date: "2025-11-27", horaires: "13:30 - 17:00", module: "Scripts et automatisations", type: "AF", formateur: "Benjamin ROY", détail: "Algorithmie en python", ligne: 33 },
+            { date: "2025-11-28", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "TUT", formateur: "Cédric CHAPPERT", détail: "Découverte métier + Fondamentaux", ligne: 34 },
+            { date: "2025-11-28", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "TUT", formateur: "Cédric CHAPPERT", détail: "Découverte métier + Fondamentaux", ligne: 35 },
+            { date: "2025-12-01", horaires: "09:00 - 12:30", module: "Stratégie professionnelle", type: "TUT", formateur: "Melanie DONNADIEU", détail: "", ligne: 36 },
+            { date: "2025-12-01", horaires: "13:30 - 17:00", module: "Stratégie professionnelle", type: "TUT", formateur: "Melanie DONNADIEU", détail: "", ligne: 37 },
+            { date: "2025-12-02", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "TUT", formateur: "Cédric CHAPPERT", détail: "Découverte métier + Fondamentaux", ligne: 38 },
+            { date: "2025-12-02", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "TUT", formateur: "Cédric CHAPPERT", détail: "Découverte métier + Fondamentaux", ligne: 39 },
+            { date: "2025-12-03", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "TUT", formateur: "Cédric CHAPPERT", détail: "Découverte métier + Fondamentaux", ligne: 40 },
+            { date: "2025-12-03", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "TUT", formateur: "Cédric CHAPPERT", détail: "Découverte métier + Fondamentaux", ligne: 41 },
+            { date: "2025-12-04", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "AF", formateur: "Cédric CHAPPERT", détail: "Découverte métier + Fondamentaux", ligne: 42 },
+            { date: "2025-12-04", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "AF", formateur: "Cédric CHAPPERT", détail: "Packet Tracer", ligne: 43 },
+            { date: "2025-12-05", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "TUT", formateur: "Cédric CHAPPERT", détail: "Routage OSPF + BGP + 802.1q Trunk VLAN", ligne: 44 },
+            { date: "2025-12-05", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "TUT", formateur: "Cédric CHAPPERT", détail: "Routage OSPF + BGP + 802.1q Trunk VLAN", ligne: 45 },
+            { date: "2025-12-08", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "TUT", formateur: "Cédric CHAPPERT", détail: "Routage OSPF + BGP + 802.1q Trunk VLAN", ligne: 46 },
+            { date: "2025-12-08", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "TUT", formateur: "Cédric CHAPPERT", détail: "DHCP + NTP + DNS", ligne: 47 },
+            { date: "2025-12-09", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "AF", formateur: "Cédric CHAPPERT", détail: "Routage OSPF + BGP + 802.1q Trunk VLAN", ligne: 48 },
+            { date: "2025-12-09", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "AF", formateur: "Cédric CHAPPERT", détail: "Installation vmware + Packet Tracer + renseignements IPv6", ligne: 49 },
+            { date: "2025-12-10", horaires: "09:00 - 12:30", module: "Remise à niveau", type: "AF", formateur: "Cédric CHAPPERT", détail: "RéVISION OSI / TCP IP Subnetting", ligne: 50 },
+            { date: "2025-12-10", horaires: "13:30 - 17:00", module: "Remise à niveau", type: "AF", formateur: "Cédric CHAPPERT", détail: "RéVISION OSI / TCP IP Subnetting", ligne: 51 },
+            { date: "2025-12-11", horaires: "09:00 - 12:30", module: "ITIL - GLPI", type: "TUT", formateur: "Bruno SCOTTO", détail: "ITIL", ligne: 52 },
+            { date: "2025-12-11", horaires: "13:30 - 17:00", module: "ITIL - GLPI", type: "TUT", formateur: "Bruno SCOTTO", détail: "CNIL RGPD ANSSI", ligne: 53 },
+            { date: "2025-12-12", horaires: "09:00 - 12:30", module: "Stratégie professionnelle", type: "TUT", formateur: "Melanie DONNADIEU", détail: "", ligne: 54 },
+            { date: "2025-12-12", horaires: "13:30 - 17:00", module: "Stratégie professionnelle", type: "AF", formateur: "Melanie DONNADIEU", détail: "", ligne: 55 },
+            { date: "2025-12-15", horaires: "09:00 - 12:30", module: "ITIL - GLPI", type: "TUT", formateur: "Bruno SCOTTO", détail: "GLPI", ligne: 56 },
+            { date: "2025-12-15", horaires: "13:30 - 17:00", module: "ITIL - GLPI", type: "TUT", formateur: "Bruno SCOTTO", détail: "GLPI", ligne: 57 },
+            { date: "2025-12-16", horaires: "09:00 - 12:30", module: "ITIL - GLPI", type: "AF", formateur: "Bruno SCOTTO", détail: "TP - ITIL / GLPI", ligne: 58 },
+            { date: "2025-12-16", horaires: "13:30 - 17:00", module: "ITIL - GLPI", type: "AF", formateur: "Bruno SCOTTO", détail: "Appronfondissement RGPD", ligne: 59 },
+            { date: "2025-12-17", horaires: "09:00 - 12:30", module: "ITIL - GLPI", type: "TUT", formateur: "Bruno SCOTTO", détail: "Fusion Inventory", ligne: 60 },
+            { date: "2025-12-17", horaires: "13:30 - 17:00", module: "ITIL - GLPI", type: "TUT", formateur: "Bruno SCOTTO", détail: "MDM sur GLPI - https://github.com/flyve-mdm/glpi-plugin", ligne: 61 },
+            { date: "2025-12-18", horaires: "09:00 - 12:30", module: "Stratégie professionnelle", type: "TUT", formateur: "Melanie DONNADIEU", détail: "", ligne: 62 },
+            { date: "2025-12-18", horaires: "13:30 - 17:00", module: "Stratégie professionnelle", type: "AF", formateur: "Melanie DONNADIEU", détail: "", ligne: 63 },
+            { date: "2025-12-19", horaires: "09:00 - 12:30", module: "ITIL - GLPI", type: "TUT", formateur: "Bruno SCOTTO", détail: "Encadrer les opérations de support tout en assurant une traçabilité et une démarche qualité SLA ensemble de bonnes pratiques pour le centre de support des DSI.", ligne: 64 },
+            { date: "2025-12-19", horaires: "13:30 - 17:00", module: "ITIL - GLPI", type: "AF", formateur: "Bruno SCOTTO", détail: "Rédaction de procédures différents types de niveau d'escalade (procédure AIS, TSSR, TAI)", ligne: 65 },
+            { date: "2025-12-22", horaires: "09:00 - 12:30", module: "ITIL - GLPI", type: "TUT", formateur: "Bruno SCOTTO", détail: "Apport de notions sur les Plan de Continuité et de Reprise de l'activité", ligne: 66 },
+            { date: "2025-12-22", horaires: "13:30 - 17:00", module: "ITIL - GLPI", type: "AF", formateur: "Bruno SCOTTO", détail: "Stratégie des Services (Gestion du portefeuille, des budgets, des relations, etc...)", ligne: 67 },
+            { date: "2025-12-23", horaires: "09:00 - 12:30", module: "Anglais Technique", type: "TUT", formateur: "Patrick MACHNIAK", détail: "", ligne: 68 },
+            { date: "2025-12-23", horaires: "13:30 - 17:00", module: "Anglais Technique", type: "TUT", formateur: "Patrick MACHNIAK", détail: "", ligne: 69 }
+        ];
+
+        // Variables globales
+        let filteredActivities = [...activities];
+        let currentView = 'today';
+        let currentDisplayMode = 'list';
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+        let formateursList = [];
+
+        // Fonction pour échapper le HTML
+        const esc = s => String(s||"").replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+        // Générer la liste des formateurs
+        function generateFormateursList() {
+            const formateursSet = new Set();
+            
+            // Extraire tous les formateurs uniques
+            activities.forEach(activity => {
+                if (activity.formateur && activity.formateur.trim() !== '') {
+                    formateursSet.add(activity.formateur.trim());
+                }
+            });
+            
+            // Convertir en tableau et trier
+            formateursList = Array.from(formateursSet).sort();
+            
+            // Mettre à jour la liste dans le datalist
+            const formateurListElement = document.getElementById('formateurList');
+            formateurListElement.innerHTML = '';
+            
+            formateursList.forEach(formateur => {
+                const option = document.createElement('option');
+                option.value = formateur;
+                formateurListElement.appendChild(option);
+            });
+            
+            // Mettre à jour l'affichage de la liste des formateurs
+            updateFormateursDisplay();
+        }
+
+        // Mettre à jour l'affichage de la liste des formateurs
+        function updateFormateursDisplay() {
+            const formateursCountElement = document.getElementById('formateursCount');
+            const formateursListElement = document.getElementById('formateursList');
+            
+            formateursCountElement.textContent = `${formateursList.length} formateurs`;
+            
+            let html = '';
+            formateursList.forEach(formateur => {
+                html += `
+                    <div class="formateur-display-item">
+                        ${esc(formateur)}
+                    </div>
+                `;
+            });
+            
+            formateursListElement.innerHTML = html;
+        }
+
+        // Initialiser l'application
+        function initApp() {
+            generateFormateursList();
+            showTodayActivities();
+            setupEventListeners();
+            updateStatus(`${activities.length} activités`);
+        }
+
+        // Configurer les écouteurs d'événements
+        function setupEventListeners() {
+            // CORRECTION : Ajout des écouteurs pour tous les boutons
+            document.getElementById('btnToday').addEventListener('click', showTodayActivities);
+            document.getElementById('btnNext').addEventListener('click', showNextActivity);
+            document.getElementById('btnShowAll').addEventListener('click', showAllActivities);
+            document.getElementById('btnCalendar').addEventListener('click', toggleCalendarView);
+            document.getElementById('btnSearch').addEventListener('click', performSearch);
+            
+            document.getElementById('search').addEventListener('input', handleSearch);
+            document.getElementById('filterType').addEventListener('change', handleSearch);
+            document.getElementById('filterFormateur').addEventListener('input', handleSearch);
+            
+            // Modal events
+            document.getElementById('closeModal').addEventListener('click', closeModal);
+            document.getElementById('dateModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+            
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentDisplayMode = this.getAttribute('data-view');
+                    refreshDisplay();
+                });
+            });
+        }
+
+        // Afficher les activités d'aujourd'hui - CORRIGÉ
+        function showTodayActivities() {
+            currentView = 'today';
+            const today = new Date().toISOString().split('T')[0];
+            const todayActivities = activities.filter(activity => activity.date === today);
+            
+            document.getElementById('mainTitle').textContent = "Aujourd'hui";
+            
+            if (todayActivities.length > 0) {
+                filteredActivities = todayActivities;
+                refreshDisplay();
+                updateStatus(`${todayActivities.length} activité(s) aujourd'hui`);
+            } else {
+                // Afficher le message quand il n'y a pas d'activités aujourd'hui
+                document.getElementById('contentArea').innerHTML = `
+                    <div class="activity-card">
+                        <div class="activity-date">Aucune activité aujourd'hui</div>
+                        <p class="muted">Il n'y a pas d'activités programmées pour aujourd'hui.</p>
+                    </div>
+                `;
+                updateStatus("Aucune activité aujourd'hui");
+            }
+        }
+
+        // Afficher la prochaine activité - CORRIGÉ
+        function showNextActivity() {
+            currentView = 'next';
+            const today = new Date().toISOString().split('T')[0];
+            const futureActivities = activities.filter(activity => activity.date >= today);
+            
+            if (futureActivities.length > 0) {
+                document.getElementById('mainTitle').textContent = "Prochaine activité";
+                const firstFutureDate = futureActivities[0].date;
+                filteredActivities = futureActivities.filter(activity => activity.date === firstFutureDate);
+                refreshDisplay();
+                updateStatus(`Prochaine activité le ${firstFutureDate}`);
+            } else {
+                document.getElementById('contentArea').innerHTML = `
+                    <div class="activity-card">
+                        <div class="activity-date">Aucune activité planifiée</div>
+                        <p class="muted">Aucune activité future n'a été trouvée dans le planning.</p>
+                    </div>
+                `;
+                updateStatus("Aucune activité future");
+            }
+        }
+
+        // Afficher toutes les activités - CORRIGÉ
+        function showAllActivities() {
+            currentView = 'all';
+            document.getElementById('mainTitle').textContent = "Toutes les activités";
+            filteredActivities = [...activities];
+            refreshDisplay();
+            updateStatus(`${activities.length} activités au total`);
+        }
+
+        // Basculer entre la vue liste et calendrier
+        function toggleCalendarView() {
+            currentDisplayMode = currentDisplayMode === 'list' ? 'calendar' : 'list';
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-view') === currentDisplayMode);
+            });
+            refreshDisplay();
+        }
+
+        // Rafraîchir l'affichage
+        function refreshDisplay() {
+            if (currentDisplayMode === 'list') {
+                renderActivities(filteredActivities);
+            } else {
+                renderCalendar();
+            }
+        }
+
+        // Rendu des activités en mode liste - DESIGN COMPACT
+        function renderActivities(activitiesToRender) {
+            const contentArea = document.getElementById('contentArea');
+            
+            if (activitiesToRender.length === 0) {
+                contentArea.innerHTML = `
+                    <div class="activity-card">
+                        <div class="activity-date">Aucune activité trouvée</div>
+                        <p class="muted">Aucune activité ne correspond aux critères de recherche.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            
+            // Grouper les activités par date
+            const activitiesByDate = {};
+            activitiesToRender.forEach(activity => {
+                if (!activitiesByDate[activity.date]) {
+                    activitiesByDate[activity.date] = [];
+                }
+                activitiesByDate[activity.date].push(activity);
+            });
+            
+            // Trier les dates
+            const sortedDates = Object.keys(activitiesByDate).sort();
+            
+            sortedDates.forEach(date => {
+                const dateActivities = activitiesByDate[date];
+                const dateObj = new Date(date);
+                const today = new Date().toISOString().split('T')[0];
+                
+                const isToday = date === today;
+                const isNext = currentView === 'next' && sortedDates[0] === date;
+                
+                const dateStr = dateObj.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                
+                html += `
+                    <div class="activity-card ${isToday ? 'today' : ''} ${isNext ? 'next' : ''}">
+                        <div class="activity-date">${dateStr}</div>
+                        <div class="activity-items">
+                `;
+                
+                // Afficher TOUTES les activités de la date
+                dateActivities.forEach(activity => {
+                    html += renderActivityItem(activity);
+                });
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            
+            contentArea.innerHTML = html;
+        }
+
+        // Fonction pour rendre un item d'activité COMPACT
+        function renderActivityItem(activity) {
+            const typeClass = `type-${activity.type}`;
+            const timeDisplay = activity.horaires ? activity.horaires.replace(' - ', '<br>') : '';
+            
+            return `
+                <div class="activity-item">
+                    <div class="activity-time">${timeDisplay}</div>
+                    <div class="activity-content">
+                        <div class="activity-module">${esc(activity.module || '')}</div>
+                        <div class="activity-trainer">${esc(activity.formateur || '')}</div>
+                        <div class="activity-detail">${esc(activity.détail || '')}</div>
+                        <div class="activity-location">Ligne ${activity.ligne}</div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" class="activity-checkbox" id="check-${activity.ligne}">
+                            <label class="checkbox-label" for="check-${activity.ligne}">Terminé</label>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Rendu du calendrier
+        function renderCalendar() {
+            const contentArea = document.getElementById('contentArea');
+            
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const lastDay = new Date(currentYear, currentMonth + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDay = firstDay.getDay();
+            const adjustedStartingDay = startingDay === 0 ? 6 : startingDay - 1;
+            
+            let html = `
+                <div class="month-nav">
+                    <button id="prevMonth">◀</button>
+                    <div class="month-title">${firstDay.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}</div>
+                    <button id="nextMonth">▶</button>
+                </div>
+                <div class="calendar">
+                    <div class="calendar-day-header">Lun</div>
+                    <div class="calendar-day-header">Mar</div>
+                    <div class="calendar-day-header">Mer</div>
+                    <div class="calendar-day-header">Jeu</div>
+                    <div class="calendar-day-header">Ven</div>
+                    <div class="calendar-day-header">Sam</div>
+                    <div class="calendar-day-header">Dim</div>
+            `;
+            
+            for (let i = 0; i < adjustedStartingDay; i++) {
+                html += `<div class="calendar-day"></div>`;
+            }
+            
+            const today = new Date().toISOString().split('T')[0];
+            
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayActivities = activities.filter(a => a.date === dateStr);
+                const isToday = dateStr === today;
+                
+                html += `<div class="calendar-day ${isToday ? 'today' : ''}" data-date="${dateStr}">`;
+                html += `<div class="calendar-day-header">${day}</div>`;
+                
+                dayActivities.forEach(activity => {
+                    const typeClass = `type-${activity.type}`;
+                    const shortModule = activity.module ? (activity.module.length > 10 ? activity.module.substring(0, 10) + '...' : activity.module) : '';
+                    
+                    html += `
+                        <div class="calendar-activity ${typeClass}" title="${esc(activity.module || '')}">
+                            ${shortModule}
+                        </div>
+                    `;
+                });
+                
+                html += `</div>`;
+            }
+            
+            html += `</div>`;
+            contentArea.innerHTML = html;
+            
+            // Ajouter les écouteurs pour le clic sur les dates
+            document.querySelectorAll('.calendar-day[data-date]').forEach(day => {
+                day.addEventListener('click', function() {
+                    const date = this.getAttribute('data-date');
+                    showDateDetails(date);
+                });
+            });
+            
+            document.getElementById('prevMonth').addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar();
+            });
+            
+            document.getElementById('nextMonth').addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar();
+            });
+        }
+
+        // Afficher les détails d'une date dans le modal
+        function showDateDetails(date) {
+            const dateActivities = activities.filter(activity => activity.date === date);
+            const dateObj = new Date(date);
+            const dateStr = dateObj.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            
+            document.getElementById('modalDateTitle').textContent = dateStr;
+            
+            let modalHtml = '';
+            
+            if (dateActivities.length === 0) {
+                modalHtml = `<p class="muted">Aucune activité programmée cette journée.</p>`;
+            } else {
+                dateActivities.forEach(activity => {
+                    const typeClass = `type-${activity.type}`;
+                    const timeDisplay = activity.horaires ? activity.horaires.replace(' - ', '<br>') : '';
+                    
+                    modalHtml += `
+                        <div class="modal-activity-item">
+                            <div class="modal-activity-time">${timeDisplay}</div>
+                            <div class="modal-activity-content">
+                                <div class="modal-activity-module">${esc(activity.module || '')}</div>
+                                <div class="modal-activity-meta">
+                                    <span class="badge ${typeClass}">${esc(activity.type)}</span>
+                                    ${activity.formateur ? esc(activity.formateur) : ''}
+                                </div>
+                                <div class="activity-detail">${esc(activity.détail || '')}</div>
+                                <div class="activity-location">Ligne ${activity.ligne}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            document.getElementById('modalContent').innerHTML = modalHtml;
+            document.getElementById('dateModal').style.display = 'flex';
+        }
+
+        // Fermer le modal
+        function closeModal() {
+            document.getElementById('dateModal').style.display = 'none';
+        }
+
+        // Gérer la recherche automatique
+        function handleSearch(e) {
+            // La recherche se lance automatiquement à chaque changement
+            performSearch();
+        }
+
+        // Lancer la recherche - NOUVEAU
+        function performSearch() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const typeFilter = document.getElementById('filterType').value;
+            const formateurFilter = document.getElementById('filterFormateur').value.toLowerCase();
+            
+            filteredActivities = activities.filter(activity => {
+                if (searchTerm) {
+                    const searchText = `${activity.module} ${activity.formateur} ${activity.détail}`.toLowerCase();
+                    if (!searchText.includes(searchTerm)) {
+                        return false;
+                    }
+                }
+                
+                if (typeFilter && activity.type !== typeFilter) {
+                    return false;
+                }
+                
+                if (formateurFilter && !activity.formateur.toLowerCase().includes(formateurFilter)) {
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            document.getElementById('mainTitle').textContent = "Résultats de recherche";
+            currentView = 'search';
+            refreshDisplay();
+            updateStatus(`${filteredActivities.length} activité(s) trouvée(s)`);
+        }
+
+        // Mettre à jour le statut
+        function updateStatus(message) {
+            document.getElementById('statusText').textContent = message;
+        }
+
+        // Initialiser l'application au chargement
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
